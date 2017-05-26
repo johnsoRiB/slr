@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sea Level Rise and Migration</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>-->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="js/spatialsankey.js"></script>
+
+    <link rel="icon" href="img/SLR-icon-grey.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--Navbar-->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="#page-top"><img alt="Home Page" width="15%" src="img/SLR-icon-words-trans.png"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li class="dropdown-toggle">
+                    <a href="sealevelrise.html">Sea Level Rise</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <!--use font awesome icons-->
+                        <li><a href="#"> <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                        <li><a href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                        <li><a href="https://tinyurl.com/kcgu2b4"> <i class="fa fa-link" aria-hidden="true"></i>Github</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-toggle">
+                    <a href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+    <div id="map"></div>
+    <script type="text/javascript">
+
+    // Set leaflet map
+    var map = L.map("map").setView([29.5,-90], 8);
+    // construct the base map.
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+
+//    // Initialize the SVG layer
+    var svgLayer = L.svg().addTo(map);
+
+    // Setup svg element to work with
+    var svg = d3.select("#map").select("svg")
+        .attr("pointer-events", "auto");
+
+    var linklayer = svg.append("g").attr("class", "leaflet-zoom-hide");
+    var nodelayer = svg.append("g").attr("class", "leaflet-zoom-hide");
+
+
+    // Load data asynchronosuly
+    d3.json("assets/county_pts.geojson", function(nodes) {
+        d3.csv("assets/us_links_part.csv", function(links) {
+
+            // Setup spatialsankey object
+            var spatialsankey = d3.spatialsankey()
+                .lmap(map)
+                .nodes(nodes.features)
+                .links(links);
+            console.log("pause");
+            function mouseover(d){
+                // Get link data for this node
+                var nodelinks = spatialsankey.links().filter(function(link){
+                    return link.source == d.id;
+                });
+
+                // Add data to link layer
+                var beziers = linklayer.selectAll("path").data(nodelinks);
+                link = spatialsankey.link({'use_arcs': false, 'flip': false});
+
+                // Draw new links
+                beziers.enter()
+                    .append("path")
+                    .attr("d", link)
+                    .attr('id', function(d){return d.id})
+                    .style("stroke-width", spatialsankey.link().width());
+
+                // Remove old links
+                beziers.exit().remove();
+
+                // Hide inactive nodes
+                var circleUnderMouse = this;
+                circs.transition().style('opacity',function () {
+                    return (this === circleUnderMouse) ? 0.7 : 0;
+                });
+            };
+
+
+            function mouseout (d) {
+                // Remove links
+                linklayer.selectAll("path").remove();
+                // Show all nodes
+                circs.transition().style('opacity', 0.7);
+            };
+
+            // Draw nodes
+            var node = spatialsankey.node();
+            var circs = nodelayer.selectAll("circle")
+                .data(spatialsankey.nodes())
+                .enter()
+                .append("circle")
+                .attr("cx", node.cx)
+                .attr("cy", node.cy)
+                .attr("r", node.r)
+                .style("fill", node.fill)
+                .attr("opacity", 0.7)
+                    .on("mouseover", mouseover)
+                    .on("mouseclick",mouseover)
+                    .on("mouseout", mouseout);
+
+
+            // Adopt size of drawn objects after leaflet zoom reset
+            var zoomend = function(){
+                linklayer.selectAll("path").attr("d", spatialsankey.link());
+
+                circs.attr("cx", node.cx)
+                    .attr("cy", node.cy);
+            };
+
+            map.on("zoomend", zoomend);
+        });
+    });
+
+    </script>
+</body>
+</html>

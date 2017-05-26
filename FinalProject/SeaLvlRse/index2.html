@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SLR and Immigration</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://rawgithub.com/mylen/leaflet.TileLayer.WMTS/master/leaflet-tilelayer-wmts.js"></script>
+    <script src="js/spatialsankey.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="text/javascript">
+
+    // Set leaflet map
+    var map = L.map("map").setView([50,-100], 4);
+
+    // construct the base map.
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+
+
+//    //https://coast.noaa.gov/slr/   0 to 6ft
+//    L.tileLayer('http://maps2.coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer/tile/{z}/{y}/{x}').addTo(map);
+//
+//
+//
+//
+//    var wms = L.tileLayer.wms(
+//        "http://sedac.ciesin.columbia.edu/geoserver/wms",
+//        {layers: 'gpw-v3:gpw-v3-population-density_2000', opacity: 0.5}
+//    ).addTo(map);
+
+
+    //http://ts2.scalgo.com/olpatch/wmts?token=CC5BF28A7D96B320C7DFBFD1236B5BEB&layer=SRTM_4_1%3ASRTM_4_1_flooded_sealevels&style=default&tilematrixset=EPSG%3A3857&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=7&TileCol=30&TileRow=53&threshold=100
+    // threshold unit meters
+    // Demonstrates smooth reloading of layers when changing a dimension continously. The demonstration layer is a global sea-level computation (flooding computation from SCALGO, underlying data from CGIAR-CSI SRTM) where cells that are flooded if the sea-level rises to more than x m are colored blue. The user selects the sea-level dimension using a slider.
+    var scalgoToken = 'CC5BF28A7D96B320C7DFBFD1236B5BEB';
+    var url =  'http://ts2.scalgo.com/olpatch/wmts?token=' + scalgoToken;
+    var ign = new L.TileLayer.WMTS( url,
+        {
+            layer: 'SRTM_4_1:SRTM_4_1_flooded_sealevels',
+            style: "default",
+            format: 'image/png',
+            matrixSet: 'EPSG:3857',
+            threshold: 40,
+            dimensions: {
+                'threshold': 100
+            },
+
+            attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+        }, {opacity: 0.5}
+    );
+    ign.addTo(map);
+
+
+</script>
+</body>
+</html>

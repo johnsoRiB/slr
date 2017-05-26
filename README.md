@@ -1,1 +1,3 @@
-# Sea-Level-Rise-and-Migration
+# Migration-and-Sea-Level-Rise
+
+Within the \img folder is my sketch of what our web map on migration and sea level rise might look like. The base map will be based on the WMTS Tile Transitions (https://openlayers.org/en/latest/examples/wmts-dimensions.html).It will use a similar interaction as the migrationsmap (http://migrationsmap.net/#/USA/arrivals), only focusng on counties in the United States. To look at real time data, as avaliable, it will uses a similar graphical interaction like one Climateproxiesfinder (http://climateproxiesfinder.ipsl.fr/). Together, a dynamic and interactive web map that aims to tackle how sea level rise will effect migration in the United States

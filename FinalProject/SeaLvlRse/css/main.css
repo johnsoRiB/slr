@@ -1,0 +1,64 @@
+body {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    margin: 0px;
+    font-family: 'open Sans','Helvetica Neue','Helvetica','Arial',sans-serif;
+    /*text-shadow: 0 0 1px rgba(255, 255, 255, 0.58);*/
+}
+#map {
+    width: 100%;
+    height: 100%;
+    top:50px;
+    left:0px;
+    right:0px;
+}
+
+path {
+    fill: none;
+    stroke: #4682B4;
+    stroke-opacity: 0.6;
+    stroke-linecap: round;
+    cursor: pointer;
+}
+path:hover {
+    stroke-opacity: 0.8;
+    stroke: #315B7E;
+}
+
+
+.info-panel {
+    line-height: 16px;
+    width: 280px;
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    bottom: 10px;
+    color: #070707;
+    padding: 6px 8px;
+    background: rgba(243, 243, 243, 0.73);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+
+.info-panel i {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+.info-panel p {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+}
+
+
+a:visited {color:#a0a0a0; background-color:transparent; text-decoration:none}
+a:hover   {color:#a0a0a0; background-color:transparent; text-decoration:none}
+a:active {color:#a0a0a0; background-color:transparent; text-decoration:none}
+a:link   {color:#a0a0a0; background-color:transparent; text-decoration:none}
