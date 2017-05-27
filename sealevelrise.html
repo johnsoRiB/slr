@@ -14,20 +14,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- Map Stylesheets -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.css" />
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
+    <!-- Javascript Libraries -->
+    <script src="http://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.js"></script>
+    <!-- mapbox gl js -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
+    <!-- leaflet mapbox js -->
+    <script src="http://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+
+    <!--<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>-->
     <script src="https://ivansanchez.gitlab.io/Leaflet.TileLayer.GL/src/Leaflet.TileLayer.GL.js"></script>
+
 </head>
 <body>
 
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"> <img alt="Home Page" width="18%" src="img/SLR-icon-words-trans.png"></a>
+                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="22%" src="img/SLR-icon-words-trans.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,7 +72,14 @@
 
 
 <div id="map"></div>
-<script type="text/javascript">
+
+<script>
+    var map = L.map('map').setView([38.432452, -104.000728], 5);
+    var gl = L.mapboxGL({
+        accessToken: 'pk.eyJ1IjoibWF0aGV3c24iLCJhIjoiY2oyNWp3NjhwMDA1bDJ3c2NzaGdlOXkxaiJ9.FmtJ5Lf8FFUNAjlgLPNAOA',
+        style: 'assets/style.json'
+    }).addTo(map);
+
 
     var fragmentShader = `
         void main(void) {
@@ -90,17 +108,7 @@
         }
 `
 
-    // Set leaflet map
-    var map = L.map("map").setView([40,-100], 4.5);
-    // construct the base map.
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
 
-    var mapboxAccessToken = 'pk.eyJ1IjoibWF0dCIsImEiOiJTUHZkajU0In0.oB-OGTMFtpkga8vC48HjIg';
-
-    var antitoner = L.tileLayer.gl({
-        fragmentShader: fragmentShader,
-        tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
-    }).addTo(map);
 
 
 </script>

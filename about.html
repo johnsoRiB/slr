@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<link rel="icon" href="img/SLR-icon-grey.ico" width="16" height="16" type="image/x-icon"/>
+
 <head>
 
     <meta charset="utf-8">
@@ -35,38 +37,45 @@
 <body>
 
 <!-- Navigation -->
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="#"> <img alt="trex" width="80%" src="img/th.png"></a>
-            <a class="navbar-brand" href="index.html">Sea Level Rise and Migration</a>
-        </div>
+<div>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="22%" src="img/SLR-icon-words-trans.png"></a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
-                    <a href="#index.html"></a>
-                </li>
-                <li class="dropdown-toggle">
-                    <a href="sealevelrise.html">Sea Level Rise</a>
-                </li>
-                <li class="dropdown-toggle">
-                    <a href="migration.html">Migration</a>
-                </li>
-                <li class="dropdown-toggle">
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="index.html"></a>
+                    </li>
+                    <li class="dropdown-toggle">
+                        <a href="sealevelrise.html">Sea Level Rise</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <!--use font awesome icons-->
+                            <li><a href="#"> <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                            <li><a href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                            <li><a href="https://tinyurl.com/kcgu2b4"> <i class="fa fa-link" aria-hidden="true"></i>Github</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-toggle">
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
 
 <!-- Page Content -->
 <div class="container">
@@ -97,9 +106,10 @@
             <p>The Sea Level Rise Migration Project, created by students at Oregon State University, is a geovisualization of predicted U.S. migration due to sea level rise (SLR). The project is based on migration predictions for the year 2100 and 1.8m of SLR.</p>
             <h2>Background</h2>
             <p>Given 1.8m of SLR, Hauer et al. (2016) predicted that an estimated 13.1 million Americans could face inundation by the year 2100. This prediction accounted for population growth in U.S. coastal communities. Following this work, Hauer (2017) proceeded to integrate previous findings with a migration systems analysis to estimate the magnitudes and destinations of SLR-migrant groups. Our work aims to provide an intuitive, geovisual representation of these findings.</p>
-            Talk about methods (using geojson, hosting on github to make open...)
         </div>
     </div>
+    <h2>Project Details</h2>
+    <p>Talk about methods (using geojson, hosting on github to make open...)</p>
     <!-- /.row -->
 
     <!-- Team Members -->
@@ -130,7 +140,7 @@
                 <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                 <div class="caption">
                     <h3>Efrain Yarasca<br>
-                        <small>PhD - </small>
+                        <small>PhD - Water Resources</small>
                     </h3>
                     <ul class="list-inline">
                         <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
