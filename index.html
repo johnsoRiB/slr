@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>Sea Level Rise and Migration</title>
     <!--http://localhost:63342/slr/index3.html?_ijt=88d2vjm5phcul75jff8688e48m-->
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 
     <link rel="icon" href="img/SLR-icon-grey.ico" width="16" height="16" type="image/x-icon"/>
@@ -14,10 +15,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Map Stylesheets -->
+
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
     <!-- Javascript Libraries -->
     <script src="http://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.js"></script>
      <!--mapbox gl js -->
@@ -25,11 +28,18 @@
      <!--leaflet mapbox js -->
     <script src="http://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ivansanchez.gitlab.io/Leaflet.TileLayer.GL/src/Leaflet.TileLayer.GL.js"></script>
 
+
+
 </head>
 <body>
+
+var
 
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -40,6 +50,7 @@
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="22%" src="img/SLR-icon-words-trans.png"></a>
+                <!--<a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="225%" src="img/SLR-icon-new.png"></a>-->
             </div>
 
 
@@ -51,28 +62,75 @@
                     </li>
                     <!--Choose a state!-->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Zoom to State... <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <!--use font awesome icons-->
-                            <li><a href="#"> <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-                            <li><a href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-                            <li><a href="https://tinyurl.com/kcgu2b4"> <i class="fa fa-link" aria-hidden="true"></i>Github</a></li>
+                        <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Zoom to State  <span class="caret"></span></a>
+                        <ul class="dropdown-menu scrollable-menu"class="dropdown-menu scrollable-menu" role="menu">
+                            <li class="statelist"><a href="javascript:map.setView([32.8067,-86.7911],7);">Alabama</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([61.3707,-152.4044],7);">Alaska</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([33.7298,-111.4312],7);">Arizona</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([34.9697,-92.3731],7);">Arkansas</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([36.1162,-119.6816],7);">California</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([39.0598,-105.3111],7);">Colorado</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([41.5978,-72.7554],7);">Connecticut</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([39.3185,-75.5071],7);">Delaware</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([38.8974,-77.0268],7);">District of Columbia</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([27.7663,-81.6868],7);">Florida</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([33.0406,-83.6431],7);">Georgia</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([21.0943,-157.4983],7);">Hawaii</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.2405,-114.4788],7);">Idaho</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([40.3495,-88.9861],7);">Illinois</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([39.8494,-86.2583],7);">Indiana</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([42.0115,-93.2105],7);">Iowa</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([38.5266,-96.7265],7);">Kansas</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([37.6681,-84.6701],7);">Kentucky</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([31.1695,-91.8678],7);">Louisiana</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.6939,-69.3819],7);">Maine</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([39.0639,-76.8021],7);">Maryland</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([42.2302,-71.5301],7);">Massachusetts</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([43.3266,-84.5361],7);">Michigan</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([45.6945,-93.9002],7);">Minnesota</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([32.7416,-89.6787],7);">Mississippi</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([38.4561,-92.2884],7);">Missouri</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([46.9219,-110.4544],7);">Montana</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([41.1254,-98.2681],7);">Nebraska</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([38.3135,-117.0554],7);">Nevada</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([43.4525,-71.5639],7);">New Hampshire</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([40.2989,-74.521],7);">New Jersey</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([34.8405,-106.2485],7);">New Mexico</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([42.1657,-74.9481],7);">New York</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([35.6301,-79.8064],7);">North Carolina</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([47.5289,-99.784],7);">North Dakota</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([40.3888,-82.7649],7);">Ohio</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([35.5653,-96.9289],7);">Oklahoma</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.572,-122.0709],7);">Oregon</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([40.5908,-77.2098],7);">Pennsylvania</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([41.6809,-71.5118],7);">Rhode Island</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([33.8569,-80.945],7);">South Carolina</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.2998,-99.4388],7);">South Dakota</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([35.7478,-86.6923],7);">Tennessee</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([31.0545,-97.5635],7);">Texas</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([40.15,-111.8624],7);">Utah</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.0459,-72.7107],7);">Vermont</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([37.7693,-78.17],7);">Virginia</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([47.4009,-121.4905],7);">Washington</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([38.4912,-80.9545],7);">West Virginia</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([44.2685,-89.6165],7);">Wisconsin</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([42.756,-107.3025],7);">Wyoming</a></li>
                         </ul>
                     </li>
                     <li class="dropdown-toggle">
-                        <a href="index.html">SLR Geovizualization</a>
+                        <a style="color: black" href="index.html">Migration Map</a>
+                    </li>
+                    <li class="dropdown-toggle">
+                        <a style="color: black" href="about.html">About</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
+                        <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <!--use font awesome icons-->
-                            <li><a href="#"> <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-                            <li><a href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-                            <li><a href="https://tinyurl.com/kcgu2b4"> <i class="fa fa-link" aria-hidden="true"></i>Github</a></li>
+                            <!--state list-->
+
+                            <li><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                            <li><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/Sea-Level-Rise-and-Migration"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown-toggle">
-                        <a href="javascript:map.setView([40, -120.5795], 5);">About</a>
                     </li>
                 </ul>
             </div>
@@ -84,21 +142,23 @@
 
 <!--info panel-->
 <div class="info-panel">
-    <h4> Sea Level Rise Migration Map </h4><hr>
-    <p><b> Meters below sea level in 2100: </b></p><br>
+
+    <!--place holder-->
+    <h4>Introduction</h4>
+    <p>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover mouse over hexagon to see migration from the inundated region. Magnitude of migration groups are represented by arc thickness (???).</p><br/>
+    <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>
+<hr>
+    <h4>Legend</h4>
+    <p><b> Meters below sea level in 2100: </b></p>
     <i style="background: #f5f5f3"></i> <p> Above sea level </p>
     <i style="background: #ffeda0"></i> <p> 0.0 - 0.6 meters </p>
     <i style="background: #feb24c"></i> <p> 0.6 - 1.2 meters </p>
     <i style="background: #f03b20"></i> <p> 1.2 - 1.8 meters </p>
-    <br>
-
-    <!--place holder-->
-    <p>Hover mouse over hexagon to see migration from the inundated region. Magnitude of migration groups are represented by arc thickness (???).</p><br/>
-    <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100. See <a href="about.html">"Team and Project Information" for more details.</a></p><br>
+<hr>
+    <h4>Credits</h4>
     <p> Web Map Lib: Leaflet | BaseMap: CartoDB |</p><br>
-    <p> Created By: <a href="about.html/#team"> Students and faculty at Oregon State University </a></p><br>
-    <p> A Project supported by <a href="http://geoviz.ceoas.oregonstate.edu" target="_blank"> <img src="img/cart-logo.png" style="height:16px;margin-top:-4px"> The Cartography and Geovisualization Group</a> at Oregon State University</p>
-
+    <p> Created By: <a href="about.html#team"><u>Students and faculty at Oregon State University</u></a></p><br>
+    <p> Project supported by <a href="http://geoviz.ceoas.oregonstate.edu" target="_blank"> <img src="img/cart-logo.png" style="height:16px;margin-top:-4px"> <u>The Cartography and Geovisualization Group</u></a> at Oregon State University</p>
 </div>
 
 
@@ -132,35 +192,34 @@
                 gl_FragColor = vec4(240.0/255.0, 59.0/255.0, 32.0/255.0, .5);
             } else {
                 // THE OCEAN
-                gl_FragColor = vec4(0.80, 0.92, 1.0, 0.4);
+                gl_FragColor = vec4(0.0/255.0, 159.0/255.0, 155.0/255.0, 0.3);
             }
         }
 `
 
-//    var map = L.map('map').setView([38.432452, -104.000728], 5);
-//
-//    var mapboxAccessToken = 'pk.eyJ1IjoibWF0aGV3c24iLCJhIjoiY2oyNWp3NjhwMDA1bDJ3c2NzaGdlOXkxaiJ9.FmtJ5Lf8FFUNAjlgLPNAOA';
-//
-//    // construct the base map.
-//    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
-//
-//    var antitoner = L.tileLayer.gl({
-//        fragmentShader: fragmentShader,
-//        tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
-//    }).addTo(map);
-
     // Set leaflet map
-    var map = L.map("map",{zoomControl: false}).setView([39.8282, -98.5795], 5);
+    var map = L.map('map',{zoomControl: false}).setView([39.8282, -101.5795], 5);
+    map.options.minZoom = 4;
+    map.options.maxZoom = 10;
     L.control.zoom({position: "bottomright"}).addTo(map);
+
     // construct the base map.
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
 
-    var mapboxAccessToken = 'pk.eyJ1IjoibWF0dCIsImEiOiJTUHZkajU0In0.oB-OGTMFtpkga8vC48HjIg';
+
+    var mapboxAccessToken = 'pk.eyJ1IjoibWF0aGV3c24iLCJhIjoiY2oyNWp3NjhwMDA1bDJ3c2NzaGdlOXkxaiJ9.FmtJ5Lf8FFUNAjlgLPNAOA';
 
     var antitoner = L.tileLayer.gl({
         fragmentShader: fragmentShader,
         tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
     }).addTo(map);
+
+    var gl = L.mapboxGL({
+        accessToken: mapboxAccessToken,
+        style: 'assets/borders.json'
+    }).addTo(map);
+
+
 
 </script>
 </body>

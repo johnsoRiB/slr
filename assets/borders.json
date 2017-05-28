@@ -1,0 +1,203 @@
+{
+    "version": 8,
+    "name": "state lines",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:type": "default",
+        "mapbox:groups": {
+            "1444934295202.7542": {
+                "name": "Admin boundaries",
+                "collapsed": true
+            }
+        }
+    },
+    "center": [
+        -85.14073538418529,
+        45.90534279278984
+    ],
+    "zoom": 3.873723763908126,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "composite": {
+            "url": "mapbox://mapbox.mapbox-streets-v7",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/mathewsn/cj386je6h00092spyli2esms1",
+    "glyphs": "mapbox://fonts/mathewsn/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "admin-3-4-boundaries-bg",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444934295202.7542"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "maritime",
+                    0
+                ],
+                [
+                    ">=",
+                    "admin_level",
+                    3
+                ]
+            ],
+            "layout": {
+                "line-join": "bevel"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 36%)",
+                "line-opacity": 1,
+                "line-blur": 0,
+                "line-dasharray": [
+                    1,
+                    0
+                ],
+                "line-translate": [
+                    0,
+                    0
+                ],
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            3,
+                            0.5
+                        ],
+                        [
+                            10,
+                            1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "admin-3-4-boundaries",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444934295202.7542"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "maritime",
+                    0
+                ],
+                [
+                    ">=",
+                    "admin_level",
+                    3
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-dasharray": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            6,
+                            [
+                                2,
+                                0
+                            ]
+                        ],
+                        [
+                            7,
+                            [
+                                2,
+                                2,
+                                6,
+                                2
+                            ]
+                        ]
+                    ]
+                },
+                "line-blur": 0,
+                "line-color": "hsl(0, 0%, 36%)",
+                "line-opacity": 1,
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            3,
+                            0.5
+                        ],
+                        [
+                            10,
+                            1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "admin-2-boundaries",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444934295202.7542"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "admin_level",
+                    2
+                ],
+                [
+                    "==",
+                    "disputed",
+                    0
+                ],
+                [
+                    "==",
+                    "maritime",
+                    0
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 36%)",
+                "line-blur": 0,
+                "line-opacity": 1,
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            3,
+                            0.5
+                        ],
+                        [
+                            10,
+                            1
+                        ]
+                    ]
+                }
+            }
+        }
+    ],
+    "created": "2017-05-28T04:02:57.392Z",
+    "id": "cj386je6h00092spyli2esms1",
+    "modified": "2017-05-28T05:46:46.475Z",
+    "owner": "mathewsn",
+    "visibility": "private",
+    "draft": false
+}

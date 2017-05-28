@@ -26,21 +26,44 @@ path:hover {
     stroke: #315B7E;
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
 
 .info-panel {
     line-height: 16px;
     width: 280px;
     position: absolute;
     z-index: 1000;
-    left: 10px;
-    bottom: 10px;
+    left: 18px;
+    bottom: 18px;
     color: #070707;
     padding: 6px 8px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
 
+li {
+    font-family: 'Francois One', sans-serif;
+    font-size: 19px;
+    padding-right: 15px;
+}
+
+h4 {
+    font-family: 'Francois One', sans-serif;
+}
+
+.infobox {
+    font-size: 14px;
+}
+
+.statelist {
+    font-family: 'Francois One', sans-serif;
+    font-size: 14px;
+}
 
 .info-panel i {
     width: 16px;
@@ -57,11 +80,10 @@ path:hover {
     margin: 0;
 }
 
-
-a:visited {color:#a0a0a0; background-color:transparent; text-decoration:none}
-a:hover   {color:#a0a0a0; background-color:transparent; text-decoration:none}
-a:active {color:#a0a0a0; background-color:transparent; text-decoration:none}
-a:link   {color:#a0a0a0; background-color:transparent; text-decoration:none}
+a:visited {color: #000000; background-color:transparent; text-decoration:none}
+a:hover   {color: #000000; background-color:transparent; text-decoration:none}
+a:active {color: #000000; background-color:transparent; text-decoration:none}
+a:link   {color: #000000; background-color:transparent; text-decoration:none}
 
 .logo {
     margin-top:-12px
