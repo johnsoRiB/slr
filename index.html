@@ -65,7 +65,7 @@ var
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Zoom to State  <span class="caret"></span></a>
                         <ul class="dropdown-menu scrollable-menu"class="dropdown-menu scrollable-menu" role="menu">
                             <li class="statelist"><a href="javascript:map.setView([32.8067,-86.7911],7);">Alabama</a></li>
-                            <li class="statelist"><a href="javascript:map.setView([61.3707,-152.4044],7);">Alaska</a></li>
+                            <li class="statelist"><a href="javascript:map.setView([61.3707,-152.4044],4);">Alaska</a></li>
                             <li class="statelist"><a href="javascript:map.setView([33.7298,-111.4312],7);">Arizona</a></li>
                             <li class="statelist"><a href="javascript:map.setView([34.9697,-92.3731],7);">Arkansas</a></li>
                             <li class="statelist"><a href="javascript:map.setView([36.1162,-119.6816],7);">California</a></li>
@@ -206,6 +206,8 @@ var
     // construct the base map.
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
 
+//    L.geoJson.ajax("assets/jsonstates.js").addTo(map);
+
 
     var mapboxAccessToken = 'pk.eyJ1IjoibWF0aGV3c24iLCJhIjoiY2oyNWp3NjhwMDA1bDJ3c2NzaGdlOXkxaiJ9.FmtJ5Lf8FFUNAjlgLPNAOA';
 
@@ -214,10 +216,10 @@ var
         tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
     }).addTo(map);
 
-    var gl = L.mapboxGL({
-        accessToken: mapboxAccessToken,
-        style: 'assets/borders.json'
-    }).addTo(map);
+//    var gl = L.mapboxGL({
+//        accessToken: mapboxAccessToken,
+//        style: 'assets/borders.json'
+//    }).addTo(map);
 
 
 

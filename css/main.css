@@ -32,6 +32,18 @@ path:hover {
     overflow-x: hidden;
 }
 
+.navbar {
+    height: 40px;
+    min-height: 45px;
+}
+
+.navbar-nav>li>a {
+    padding-top: 12px; padding-bottom: 8px;
+}
+.navbar-brand {
+    padding: 12px 0px;
+}
+
 .info-panel {
     line-height: 16px;
     width: 280px;
