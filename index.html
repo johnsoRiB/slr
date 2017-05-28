@@ -4,43 +4,37 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Sea Level Rise and Migration</title>
-    <!--http://localhost:63342/slr/index3.html?_ijt=88d2vjm5phcul75jff8688e48m-->
+    <title>Sea Level Rise Migration Project</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-
+    <!--favicon-->
     <link rel="icon" href="img/SLR-icon-grey.ico" width="16" height="16" type="image/x-icon"/>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- Map Stylesheets -->
-
+    <!-- MapboxGL CSS -->
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
-
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
+    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
-    <!-- Javascript Libraries -->
+    <!--Leaflet Javascript -->
     <script src="https://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.js"></script>
-     <!--mapbox gl js -->
+     <!--MapboxGL Javascript-->
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-     <!--leaflet mapbox js -->
+     <!--Leaflet Mapbox Javascript-->
     <script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Bootstrap Javascript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ivansanchez.gitlab.io/Leaflet.TileLayer.GL/src/Leaflet.TileLayer.GL.js"></script>
-
-
-
 </head>
 <body>
 
-var
-
+<!--Build Bootstrap Navbar-->
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container-fluid">
@@ -49,11 +43,9 @@ var
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="18%" src="img/SLR-icon-words-trans.png"></a>
-                <!--<a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="225%" src="img/SLR-icon-new.png"></a>-->
+                <!--<a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="18%" src="img/SLR-icon-words-trans.png"></a>-->
+                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="130%" src="img/SLR-icon-new.png"></a>
             </div>
-
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -117,17 +109,18 @@ var
                             <li class="statelist"><a href="javascript:map.setView([42.756,-107.3025],7);">Wyoming</a></li>
                         </ul>
                     </li>
+                    <!--Migration Map-->
                     <li class="dropdown-toggle">
                         <a style="color: black" href="index.html">Migration Map</a>
                     </li>
+                    <!--About Page-->
                     <li class="dropdown-toggle">
                         <a style="color: black" href="about.html">About</a>
                     </li>
+                    <!--Share-->
                     <li class="dropdown">
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <!--state list-->
-
                             <li><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
                             <li><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/Sea-Level-Rise-and-Migration"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
                         </ul>
@@ -140,10 +133,8 @@ var
     </nav>
 </div>
 
-<!--info panel-->
+<!--Side Panel-->
 <div class="info-panel">
-
-    <!--place holder-->
     <h4>Introduction</h4>
     <p>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover mouse over hexagon to see migration from the inundated region. Magnitude of migration groups are represented by arc thickness (???).</p><br/>
     <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>

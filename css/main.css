@@ -41,7 +41,9 @@ path:hover {
     padding-top: 12px; padding-bottom: 8px;
 }
 .navbar-brand {
-    padding: 12px 0px;
+    padding-top:  17px;
+    padding-bottom: 6px;
+    padding-left: 6px;
 }
 
 .info-panel {
