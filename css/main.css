@@ -28,8 +28,18 @@ path:hover {
 
 .scrollable-menu {
     height: auto;
-    max-height: 600px;
+    max-height: 310px;
     overflow-x: hidden;
+}
+
+hr {
+    display: block;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
 }
 
 .navbar {
@@ -101,4 +111,22 @@ a:link   {color: #000000; background-color:transparent; text-decoration:none}
 
 .logo {
     margin-top:-12px
+}
+
+path {
+    pointer-events: visible !important;
+    cursor: pointer;
+}
+
+path.curve {
+    stroke: #00a5ff;
+    stroke-opacity: 0.4;
+    stroke-linecap: round;
+    pointer-events: visible !important;
+}
+
+path:hover {
+    stroke-opacity: 0.8;
+    stroke: #007bbf;
+
 }
