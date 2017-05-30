@@ -143,7 +143,7 @@
 <div class="info-panel">
     <h4>Introduction</h4>
     <p><b>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover or click on hexagon to see migration from the inundated region.</b></p><br/>
-    <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>
+    <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100 <a target="_blank" href="https://doi.org/10.1038/NCLIMATE3271"><u>(Hauer, 2017)</u></a>. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>
 <hr>
     <h4>Legend</h4>
     <p><b> Meters below sea level in 2100: </b></p>
@@ -257,7 +257,7 @@
                     }
                 }
                 // flowinfo
-                $("#flowinfo").html("<b>In: </b>" +  d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" +  d.properties.aggregate_outflows.toString() + "");
+                $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" +  d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" +  d.properties.aggregate_outflows.toString() + "");
                 // Draw new links
                 beziers.enter()
                     .append("path")
