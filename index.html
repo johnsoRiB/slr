@@ -35,6 +35,8 @@
     <!--Bootstrap Javascript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/spatialsankey-custom.js"></script>
+    <!--geojson library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 </head>
 <body>
 
@@ -125,8 +127,8 @@
                     <li class="dropdown">
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-                            <li><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/Sea-Level-Rise-and-Migration"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
+                            <li class="statelist"><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                            <li class="statelist"><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/Sea-Level-Rise-and-Migration"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -140,7 +142,7 @@
 <!--Side Panel-->
 <div class="info-panel">
     <h4>Introduction</h4>
-    <p><b>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover mouse over hexagon to see migration from the inundated region.</b></p><br/>
+    <p><b>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover or click on hexagon to see migration from the inundated region.</b></p><br/>
     <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>
 <hr>
     <h4>Legend</h4>
@@ -150,12 +152,12 @@
     <i style="background: #feb24c"></i> <p> 0.6 - 1.2 meters </p>
     <i style="background: #f03b20"></i> <p> 1.2 - 1.8 meters </p>
 <hr>
-    <h4>Region Info</h4>
-    <div><p id="flowinfo">34567834567845678hdjkljflwef</p></div>
+    <h4>Population Flow</h4>
+    <div><p id="flowinfo">Hover or click on hexagon to view migration data.</p></div>
     <hr>
     <h4>Credits</h4>
-    <p> Web Map Lib: Leaflet | BaseMap: CartoDB |</p><br>
-    <p> Created By: <a href="about.html#team"><u>Students and faculty at Oregon State University</u></a></p><br>
+    <p> | BaseMap: CartoDB | <a href="about.html"><u>Web Map Library</u> |</a></p><br>
+    <p> Created By: <a href="about.html"><u>Students and faculty at Oregon State University</u></a></p><br>
     <p> Project supported by <a href="http://geoviz.ceoas.oregonstate.edu" target="_blank"> <img src="img/cart-logo.png" style="height:16px;margin-top:-4px"> <u>The Cartography and Geovisualization Group</u></a> at Oregon State University</p>
 </div>
 
@@ -191,7 +193,7 @@
         }
 `
 
-    // Set leaflet maap
+    // Set leaflet map
     var map = L.map('map',{zoomControl: false}).setView([39.8282, -101.5795], 5);
     map.options.minZoom = 4;
     map.options.maxZoom = 14;
@@ -208,10 +210,16 @@
         tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
     }).addTo(map);
 
-    var gl = L.mapboxGL({
-        accessToken: mapboxAccessToken,
-        style: 'assets/borders.json'
-    }).addTo(map);
+//    var gl = L.mapboxGL({
+//        accessToken: mapboxAccessToken,
+//        style: 'assets/borders.json'
+//    }).addTo(map);
+
+//    var counties = L.geoJson.ajax('assets/states.json',  {
+//        className: "ttt",
+//        weight: 1,
+//        opacity: 0.3}).addTo(map);
+
 
     // Initialize the SVG layer
     var svgLayer = L.svg().addTo(map);
@@ -229,6 +237,8 @@
                 .nodes(nodes.features)
                 .links(links);
             var hex_opened = false;
+            var hex_clicked = false;
+
             var mouseover = function(d) {
                 if (hex_opened) return 0;
                 // Get link data for this node
@@ -247,7 +257,7 @@
                     }
                 }
                 // flowinfo
-                $("#flowinfo").html("In 2013, the total population moved out from this region is <b>" +  d.properties.aggregate_outflows.toString() + "</b>, and the population moved in is <b>" +  d.properties.aggregate_inflows.toString() + "</b>.");
+                $("#flowinfo").html("<b>In: </b>" +  d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" +  d.properties.aggregate_outflows.toString() + "");
                 // Draw new links
                 beziers.enter()
                     .append("path")
@@ -262,7 +272,7 @@
                 // Hide inactive nodes
                 var circleUnderMouse = this;
                 hexs.transition().style('opacity',function () {
-                    return (this === circleUnderMouse) ? 0.7 : 0;
+                    return (this === circleUnderMouse) ? 0.6 : 0;
                 });
             }
             var mouseout = function(d) {
@@ -270,12 +280,14 @@
                     // Remove links
                     linklayer.selectAll("path").remove();
                     // Show all nodes
-                    hexs.transition().style('opacity', 0.5);
+                    hexs.transition().style('opacity', 0.3);
+                    hex_opened = false;
                 }
-                hex_opened = false;
+
             }
             var click = function(d) {
                 hex_opened = true;
+                hex_clicked = true;
             }
             // Draw nodes
             var node = spatialsankey.node();
@@ -286,7 +298,7 @@
                 .attr("d", node.geopath)
                 .style("fill", node.fill)
                 .style("display", node.display)
-                .attr("opacity", 0.5)
+                .attr("opacity", 0.3)
                 .on("mouseover", mouseover)
                 .on("mouseout", mouseout)
                 .on("click", click);
@@ -295,13 +307,14 @@
                 hexs.attr("d", node.geopath);
             };
             var mapclick = function(e) {
-                if (!hex_opened) {
-                    hex_opened = false;
+                if (hex_clicked){
+                    hex_clicked = false;
+                }else {
                     linklayer.selectAll("path").remove();
                     // Show all nodes
-                    hexs.transition().style('opacity', 0.6);
-                }
-            }
+                    hexs.transition().style('opacity', 0.3);
+                    hex_opened = false;
+                }}
             map.on("zoomend", zoomend);
             map.on("click", mapclick);
         });
