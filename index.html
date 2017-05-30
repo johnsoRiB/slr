@@ -48,7 +48,15 @@
 
 </head>
 <body>
-
+<!--Facebook sharing-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!--Build Bootstrap Navbar-->
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -137,8 +145,11 @@
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="statelist"><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-                            <li class="statelist"><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/Sea-Level-Rise-and-Migration"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
+                            <li class="statelist"><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/slr"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <div class="fb-share-button" data-href="https://johnsorib.github.io/slr/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjohnsorib.github.io%2Fslr%2F&amp;src=sdkpreparse">Share</a></div>
                     </li>
                 </ul>
             </div>
