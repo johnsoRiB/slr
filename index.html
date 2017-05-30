@@ -37,6 +37,15 @@
     <script src="js/spatialsankey-custom.js"></script>
     <!--geojson library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(":checkbox").click(function(){
+                $(".info-panel").toggle();
+            });
+        });
+    </script>
+
 </head>
 <body>
 
@@ -155,6 +164,13 @@
     <h4>Population Flow</h4>
     <div><p id="flowinfo">Hover or click on hexagon to view migration data.</p></div>
     <hr>
+    <h4>Controls</h4>
+    <label class="switch">
+        <input name="hexswitch" type="checkbox">
+        <div class="slider round"></div>
+    </label>
+
+    <hr>
     <h4>Credits</h4>
     <p> | BaseMap: CartoDB | <a href="about.html"><u>Web Map Library</u> |</a></p><br>
     <p> Created By: <a href="about.html"><u>Students and faculty at Oregon State University</u></a></p><br>
@@ -219,107 +235,114 @@
 //        className: "ttt",
 //        weight: 1,
 //        opacity: 0.3}).addTo(map);
+</script>
 
+<div id="hexagons">
+<script>
+        // Initialize the SVG layer
+        var svgLayer = L.svg().addTo(map);
 
-    // Initialize the SVG layer
-    var svgLayer = L.svg().addTo(map);
+        // Setup svg element to work with
+        var svg = d3.select("#map").select("svg");
+        var linklayer = svg.append("g").attr("class", "leaflet-zoom-hide");
+        var nodelayer = svg.append("g").attr("class", "leaflet-zoom-hide");
+        // Load data asynchronosuly
+        d3.json("assets/hex_select_4326.geojson", function (nodes) {
+            d3.csv("assets/hexagon_links.csv", function (links) {
+                // Setup spatialsankey object
+                var spatialsankey = d3.spatialsankey()
+                    .lmap(map)
+                    .nodes(nodes.features)
+                    .links(links);
+                var hex_opened = false;
+                var hex_clicked = false;
 
-    // Setup svg element to work with
-    var svg = d3.select("#map").select("svg");
-    var linklayer = svg.append("g").attr("class", "leaflet-zoom-hide");
-    var nodelayer = svg.append("g").attr("class", "leaflet-zoom-hide");
-    // Load data asynchronosuly
-    d3.json("assets/hex_select_4326.geojson", function(nodes) {
-        d3.csv("assets/hexagon_links.csv", function(links) {
-            // Setup spatialsankey object
-            var spatialsankey = d3.spatialsankey()
-                .lmap(map)
-                .nodes(nodes.features)
-                .links(links);
-            var hex_opened = false;
-            var hex_clicked = false;
+                var mouseover = function (d) {
+                    if (hex_opened) return 0;
+                    // Get link data for this node
+                    var nodelinks = spatialsankey.links().filter(function (link) {
+                        return link.source == d.id;
+                    });
+                    // Add data to link layer
+                    var beziers = linklayer.selectAll("path").data(nodelinks);
+                    link = spatialsankey.link({'use_arcs': false, 'flip': false});
+                    // filter
+                    var linkfilter = function (d) {
+                        if (parseFloat(d.flow) > 200) {
+                            return "block"
+                        } else {
+                            return "none"
+                        }
+                    }
+                    // flowinfo
+                    $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" + d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" + d.properties.aggregate_outflows.toString() + "");
+                    // Draw new links
+                    beziers.enter()
+                        .append("path")
+                        .attr("d", link)
+                        .attr("class", "curve")
+                        .style("fill", "none")
+                        .style("display", linkfilter)
+                        .attr('id', function (d) {
+                            return d.id
+                        })
+                        .style("stroke-width", function (d) {
+                            return Math.pow(parseFloat(d.flow), 1 / 3) / 5
+                        });
+                    // Remove old links
+                    beziers.exit().remove();
+                    // Hide inactive nodes
+                    var circleUnderMouse = this;
+                    hexs.transition().style('opacity', function () {
+                        return (this === circleUnderMouse) ? 0.6 : 0;
+                    });
+                }
+                var mouseout = function (d) {
+                    if (!hex_opened) {
+                        // Remove links
+                        linklayer.selectAll("path").remove();
+                        // Show all nodes
+                        hexs.transition().style('opacity', 0.3);
+                        hex_opened = false;
+                    }
 
-            var mouseover = function(d) {
-                if (hex_opened) return 0;
-                // Get link data for this node
-                var nodelinks = spatialsankey.links().filter(function(link){
-                    return link.source == d.id;
-                });
-                // Add data to link layer
-                var beziers = linklayer.selectAll("path").data(nodelinks);
-                link = spatialsankey.link({'use_arcs': false, 'flip': false});
-                // filter
-                var linkfilter = function(d) {
-                    if(parseFloat(d.flow) > 200) {
-                        return "block"
+                }
+                var click = function (d) {
+                    hex_opened = true;
+                    hex_clicked = true;
+                }
+                // Draw nodes
+                var node = spatialsankey.node();
+                var hexs = nodelayer.selectAll("path")
+                    .data(spatialsankey.nodes())
+                    .enter()
+                    .append("path")
+                    .attr("d", node.geopath)
+                    .style("fill", node.fill)
+                    .style("display", node.display)
+                    .attr("opacity", 0.3)
+                    .on("mouseover", mouseover)
+                    .on("mouseout", mouseout)
+                    .on("click", click);
+                var zoomend = function () {
+                    linklayer.selectAll("path").attr("d", spatialsankey.link());
+                    hexs.attr("d", node.geopath);
+                };
+                var mapclick = function (e) {
+                    if (hex_clicked) {
+                        hex_clicked = false;
                     } else {
-                        return "none"
+                        linklayer.selectAll("path").remove();
+                        // Show all nodes
+                        hexs.transition().style('opacity', 0.3);
+                        hex_opened = false;
                     }
                 }
-                // flowinfo
-                $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" +  d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" +  d.properties.aggregate_outflows.toString() + "");
-                // Draw new links
-                beziers.enter()
-                    .append("path")
-                    .attr("d", link)
-                    .attr("class", "curve")
-                    .style("fill", "none")
-                    .style("display", linkfilter)
-                    .attr('id', function(d){return d.id})
-                    .style("stroke-width", function(d){ return Math.pow( parseFloat(d.flow), 1/3) / 5});
-                // Remove old links
-                beziers.exit().remove();
-                // Hide inactive nodes
-                var circleUnderMouse = this;
-                hexs.transition().style('opacity',function () {
-                    return (this === circleUnderMouse) ? 0.6 : 0;
-                });
-            }
-            var mouseout = function(d) {
-                if (!hex_opened){
-                    // Remove links
-                    linklayer.selectAll("path").remove();
-                    // Show all nodes
-                    hexs.transition().style('opacity', 0.3);
-                    hex_opened = false;
-                }
-
-            }
-            var click = function(d) {
-                hex_opened = true;
-                hex_clicked = true;
-            }
-            // Draw nodes
-            var node = spatialsankey.node();
-            var hexs = nodelayer.selectAll("path")
-                .data(spatialsankey.nodes())
-                .enter()
-                .append("path")
-                .attr("d", node.geopath)
-                .style("fill", node.fill)
-                .style("display", node.display)
-                .attr("opacity", 0.3)
-                .on("mouseover", mouseover)
-                .on("mouseout", mouseout)
-                .on("click", click);
-            var zoomend = function() {
-                linklayer.selectAll("path").attr("d", spatialsankey.link());
-                hexs.attr("d", node.geopath);
-            };
-            var mapclick = function(e) {
-                if (hex_clicked){
-                    hex_clicked = false;
-                }else {
-                    linklayer.selectAll("path").remove();
-                    // Show all nodes
-                    hexs.transition().style('opacity', 0.3);
-                    hex_opened = false;
-                }}
-            map.on("zoomend", zoomend);
-            map.on("click", mapclick);
+                map.on("zoomend", zoomend);
+                map.on("click", mapclick);
+            });
         });
-    });
-
 </script>
+</div>
 </body>
 </html>
