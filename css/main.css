@@ -239,3 +239,29 @@ input:checked + .slider:before {
     padding-right: 3px;
 }
 
+.tweet {
+    padding-top: 8px;
+    right: -3px;
+}
+
+.gitlogo {
+    padding-bottom: 4px;
+    height: 24px;
+}
+
+.gitlink {
+    bottom: 7px;
+}
+
+.git-panel {
+    z-index: 1;
+    width: auto;
+    height: 29px;
+    position: absolute;
+    top: 8px;
+    left: 0px;
+    color: #070707;
+    /*background: #90C2C3;*/
+    background: transparent;
+    border-radius: 4px;
+}
