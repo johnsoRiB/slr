@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang='en'>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Sea Level Rise Migration Project</title>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <!--favicon-->
     <link rel="icon" href="img/SLR-icon-grey.ico" width="16" height="16" type="image/x-icon"/>
@@ -16,47 +14,26 @@
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
-    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
 
+
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+    <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--d3-->
     <script src="https://d3js.org/d3.v3.min.js"></script>
-    <!--Google Fonts-->
-    <!--Leaflet Javascript -->
-    <!--<script src="https://cdn.leafletjs.com/leaflet/v1.0.3/leaflet.js"></script>-->
-     <!--MapboxGL Javascript-->
+    <!--MapboxGL Javascript-->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-     <!--Leaflet Mapbox Javascript-->
+    <!--Leaflet Mapbox Javascript-->
     <script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
     <script src="https://ivansanchez.gitlab.io/Leaflet.TileLayer.GL/src/Leaflet.TileLayer.GL.js"></script>
-
-
     <!--Bootstrap Javascript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/spatialsankey-custom.js"></script>
     <!--geojson library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(":checkbox").click(function(){
-                $("#hexagons").toggle();
-            });
-        });
-    </script>
-
 </head>
 <body>
-<!--Facebook sharing-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <!--Build Bootstrap Navbar-->
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -67,14 +44,16 @@
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <!--<a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="18%" src="img/SLR-icon-words-trans.png"></a>-->
-                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="130%" src="img/SLR-icon-new.png"></a>
+                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="130%" src="img/SLR-icon-trans.png"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="index.html"></a>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown-toggle">
+                        <a style="color: black; font-size: x-large; left: -16px" href="index.html">Sea Level Rise Migration Project</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <!--Choose a state!-->
                     <li class="dropdown">
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Zoom to State  <span class="caret"></span></a>
@@ -164,32 +143,44 @@
     <h4>Introduction</h4>
     <p><b>Navigate map with cursor or use the "Zoom to State" feature in the navigation bar. Hover or click on hexagon to see migration from the inundated region.</b></p><br/>
     <p>Migration data based on estimates for 1.8m of sea level rise, and for estimated U.S. population in 2100 <a target="_blank" href="https://doi.org/10.1038/NCLIMATE3271"><u>(Hauer, 2017)</u></a>. See <a href="about.html"><u>"Team and Project Information"</u></a> for more details.</p>
-<hr>
+    <hr>
     <h4>Legend</h4>
     <p><b> Meters below sea level in 2100: </b></p>
     <i style="background: #f5f5f3"></i> <p> Above sea level </p>
     <i style="background: #ffeda0"></i> <p> 0.0 - 0.6 meters </p>
     <i style="background: #feb24c"></i> <p> 0.6 - 1.2 meters </p>
     <i style="background: #f03b20"></i> <p> 1.2 - 1.8 meters </p>
-<hr>
+    <hr>
     <h4>Population Flow</h4>
     <div><p id="flowinfo">Hover or click on hexagon to view migration data.</p></div>
     <hr>
-    <h4>Controls</h4>
-    <label class="switch">
-        <input name="hexswitch" type="checkbox">
-        <div class="slider round"></div>
-    </label>
-
-    <hr>
     <h4>Credits</h4>
-    <p>Geospatial Data: CartoDB & Mapbox</p><br>
-    <p>Web Libraries: Leaflet, Bootstrap, & SpatialSankey</p><br>
-    <p>Supported by <a href="http://geoviz.ceoas.oregonstate.edu" target="_blank"> <img src="img/cart-logo.png" style="height:16px;margin-top:-4px"> <u>The Cartography and Geovisualization Group</u></a> at Oregon State University</p>
+    <p> BaseMap: CartoDB | <a href="about.html"><u>Web Map Library</u> |</a></p><br>
+    <p> Created By: <a href="about.html"><u>Students and faculty at Oregon State University</u></a></p><br>
+    <p> Project supported by <a href="http://geoviz.ceoas.oregonstate.edu" target="_blank"> <img src="img/cart-logo.png" style="height:16px;margin-top:-4px"> <u>The Cartography and Geovisualization Group</u></a> at Oregon State University</p>
+</div>
+
+
+<div class="switch-panel">
+<label class="switch" >
+    <h4 style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle&nbsp;Hexagons</h4>
+    <input id="hexswitch" type="checkbox">
+    <span class="slider round" ></span>
+</label>
 </div>
 
 <div id="map"></div>
-<script type="text/javascript">
+<script>
+
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
 
     var fragmentShader = `
         void main(void) {
@@ -237,122 +228,129 @@
         tileUrls: ['https://{s}.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=' + mapboxAccessToken]
     }).addTo(map);
 
-//    var gl = L.mapboxGL({
-//        accessToken: mapboxAccessToken,
-//        style: 'assets/borders.json'
-//    }).addTo(map);
+    // Initialize the SVG layer
+    var svgLayer = L.svg().addTo(map);
 
-//    var counties = L.geoJson.ajax('assets/states.json',  {
-//        className: "ttt",
-//        weight: 1,
-//        opacity: 0.3}).addTo(map);
-</script>
+    // Setup svg element to work with
+    var svg = d3.select("#map").select("svg");
+    var linklayer = svg.append("g").attr("class", "leaflet-zoom-hide");
+    var nodelayer = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-<div id="hexagons">
-<script>
-        // Initialize the SVG layer
-        var svgLayer = L.svg().addTo(map);
+    var hexSwitch = $("#hexswitch");
 
-        // Setup svg element to work with
-        var svg = d3.select("#map").select("svg");
-        var linklayer = svg.append("g").attr("class", "leaflet-zoom-hide");
-        var nodelayer = svg.append("g").attr("class", "leaflet-zoom-hide");
-        // Load data asynchronosuly
-        d3.json("assets/hex_select_4326.geojson", function (nodes) {
-            d3.csv("assets/hexagon_links.csv", function (links) {
-                // Setup spatialsankey object
-                var spatialsankey = d3.spatialsankey()
-                    .lmap(map)
-                    .nodes(nodes.features)
-                    .links(links);
-                var hex_opened = false;
-                var hex_clicked = false;
 
-                var mouseover = function (d) {
-                    if (hex_opened) return 0;
-                    // Get link data for this node
-                    var nodelinks = spatialsankey.links().filter(function (link) {
-                        return link.source == d.id;
-                    });
-                    // Add data to link layer
-                    var beziers = linklayer.selectAll("path").data(nodelinks);
-                    link = spatialsankey.link({'use_arcs': false, 'flip': false});
-                    // filter
-                    var linkfilter = function (d) {
-                        if (parseFloat(d.flow) > 200) {
-                            return "block"
-                        } else {
-                            return "none"
-                        }
-                    }
-                    // flowinfo
-                    $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" + d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" + d.properties.aggregate_outflows.toString() + "");
-                    // Draw new links
-                    beziers.enter()
-                        .append("path")
-                        .attr("d", link)
-                        .attr("class", "curve")
-                        .style("fill", "none")
-                        .style("display", linkfilter)
-                        .attr('id', function (d) {
-                            return d.id
-                        })
-                        .style("stroke-width", function (d) {
-                            return Math.pow(parseFloat(d.flow), 1 / 3) / 2
-                        });
-                    // Remove old links
-                    beziers.exit().remove();
-                    // Hide inactive nodes
-                    var circleUnderMouse = this;
-                    hexs.transition().style('opacity', function () {
-                        return (this === circleUnderMouse) ? 0.6 : 0;
-                    });
-                }
-                var mouseout = function (d) {
-                    if (!hex_opened) {
-                        // Remove links
-                        linklayer.selectAll("path").remove();
-                        // Show all nodes
-                        hexs.transition().style('opacity', 0.3);
-                        hex_opened = false;
-                    }
+    var controlClick = function(){
+        if (hexSwitch.is(":checked")) {
+            map.addLayer(svgLayer);
+        } else {
+            map.removeLayer(svgLayer);
+        }
+    }
 
-                }
-                var click = function (d) {
-                    hex_opened = true;
-                    hex_clicked = true;
-                }
-                // Draw nodes
-                var node = spatialsankey.node();
-                var hexs = nodelayer.selectAll("path")
-                    .data(spatialsankey.nodes())
-                    .enter()
-                    .append("path")
-                    .attr("d", node.geopath)
-                    .style("fill", node.fill)
-                    .style("display", node.display)
-                    .attr("opacity", 0.3)
-                    .on("mouseover", mouseover)
-                    .on("mouseout", mouseout)
-                    .on("click", click);
-                var zoomend = function () {
-                    linklayer.selectAll("path").attr("d", spatialsankey.link());
-                    hexs.attr("d", node.geopath);
-                };
-                var mapclick = function (e) {
-                    if (hex_clicked) {
-                        hex_clicked = false;
+    hexSwitch.on("click", controlClick);
+
+    hexSwitch.click();
+
+    // Load data asynchronosuly
+    d3.json("assets/hex-2100.geojson", function (nodes) {
+        d3.csv("assets/links-2100.csv", function (links) {
+            // Setup spatialsankey object
+            var spatialsankey = d3.spatialsankey()
+                .lmap(map)
+                .nodes(nodes.features)
+                .links(links);
+            var hex_opened = false;
+            var hex_clicked = false;
+
+            var mouseover = function (d) {
+                if (hex_opened) return 0;
+                // Get link data for this node
+                var nodelinks = spatialsankey.links().filter(function (link) {
+                    return link.source == d.id;
+                });
+                // Add data to link layer
+                var beziers = linklayer.selectAll("path").data(nodelinks);
+                link = spatialsankey.link({'use_arcs': false, 'flip': false});
+                // filter
+                var linkfilter = function (d) {
+                    if (parseFloat(d.flow) > 200) {
+                        return "block"
                     } else {
-                        linklayer.selectAll("path").remove();
-                        // Show all nodes
-                        hexs.transition().style('opacity', 0.3);
-                        hex_opened = false;
+                        return "none"
                     }
                 }
-                map.on("zoomend", zoomend);
-                map.on("click", mapclick);
-            });
+                // flowinfo
+                $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" + d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" + d.properties.aggregate_outflows.toString() + "");
+                // Draw new links
+                beziers.enter()
+                    .append("path")
+                    .attr("d", link)
+                    .attr("class", "curve")
+                    .style("fill", "none")
+                    .style("display", linkfilter)
+                    .attr('id', function (d) {
+                        return d.id
+                    })
+                    .style("stroke-width", function (d) {
+                        return Math.pow(parseFloat(d.flow), 1 / 3) /5
+                    });
+                // Remove old links
+                beziers.exit().remove();
+                // Hide inactive nodes
+                var circleUnderMouse = this;
+                hexs.transition().style('opacity', function () {
+                    return (this === circleUnderMouse) ? 0.6 : 0;
+                });
+            }
+
+
+            var mouseout = function (d) {
+                if (!hex_opened) {
+                    // Remove links
+                    linklayer.selectAll("path").remove();
+                    // Show all nodes
+                    hexs.transition().style('opacity', 0.3);
+                    hex_opened = false;
+                }
+
+            }
+
+            var click = function (d) {
+                hex_opened = true;
+                hex_clicked = true;
+            }
+
+            // Draw nodes
+            var node = spatialsankey.node();
+            var hexs = nodelayer.selectAll("path")
+                .data(spatialsankey.nodes())
+                .enter()
+                .append("path")
+                .attr("d", node.geopath)
+                .style("fill", node.fill)
+                .style("display", node.display)
+                .attr("opacity", 0.3)
+                .on("mouseover", mouseover)
+                .on("mouseout", mouseout)
+                .on("click", click);
+            var zoomend = function () {
+                linklayer.selectAll("path").attr("d", spatialsankey.link());
+                hexs.attr("d", node.geopath);
+            };
+            var mapclick = function (e) {
+                if (hex_clicked) {
+                    hex_clicked = false;
+                } else {
+                    linklayer.selectAll("path").remove();
+                    // Show all nodes
+                    hexs.transition().style('opacity', 0.3);
+                    hex_opened = false;
+                }
+            }
+            map.on("zoomend", zoomend);
+            map.on("click", mapclick);
         });
+    });
 </script>
 </div>
 </body>

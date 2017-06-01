@@ -49,7 +49,7 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<!-- Navigation -->
+<!--Build Bootstrap Navbar-->
 <div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container-fluid">
@@ -58,33 +58,35 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <!--<a style="color: black" class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="22%" src="img/SLR-icon-words-trans.png"></a>-->
-                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="130%" src="img/SLR-icon-new.png"></a>
+                <!--<a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" width="18%" src="img/SLR-icon-words-trans.png"></a>-->
+                <a class="navbar-brand logo"  href="index.html"> <img alt="Home Page" height="130%" src="img/SLR-icon-trans.png"></a>
             </div>
-
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown-toggle">
+                        <a style="color: black; font-size: x-large; left: -16px" href="index.html">Sea Level Rise Migration Project</a>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="index.html"></a>
+                    <!--Migration Map-->
                     <li class="dropdown-toggle">
                         <a style="color: black" href="index.html">Migration Map</a>
                     </li>
+                    <!--About Page-->
                     <li class="dropdown-toggle">
                         <a style="color: black" href="about.html">About</a>
                     </li>
+                    <!--Share-->
                     <li class="dropdown">
                         <a style="color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <!--state list-->
-
-                            <li class="statelist"><a target="_blank" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-                            <li class="statelist"><a target="_blank" href="https://github.com/johnsoRiB/slr"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
+                            <li class="statelist"><a target="_blank" style="color: black" href="#"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                            <li class="statelist"><a target="_blank" style="color: black" href="https://github.com/johnsoRiB/slr"> <i class="fa fa-link" aria-hidden="true"></i> Github</a></li>
                         </ul>
+                    </li>
                     <li>
                         <div class="fb-share-button" data-href="https://johnsorib.github.io/slr/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjohnsorib.github.io%2Fslr%2F&amp;src=sdkpreparse">Share</a></div>
-                    </li>
                     </li>
                 </ul>
             </div>
@@ -123,7 +125,8 @@
             <h2 class="headers">Project Summary</h2>
             <p style="text-align:justify">The Sea Level Rise Migration Project, created by students at Oregon State University, is a geovisualization of predicted U.S. migration due to sea level rise (SLR). The project is based on migration predictions for the year 2100 and 1.8m of SLR.</p>
             <h2 class="headers">Background</h2>
-            <p style="text-align:justify">Given 1.8m of SLR, Hauer et al. (2016) predicted that an estimated 13.1 million Americans could face inundation by the year 2100. This prediction accounted for population growth in U.S. coastal communities. Following this work, Hauer (2017) proceeded to integrate previous findings with a migration systems analysis to estimate the magnitudes and destinations of SLR-migrant groups. Our work aims to provide an intuitive, geovisual representation of these findings.</p>
+            <p style="text-align:justify">Given 1.8m of SLR, Hauer et al. (2016) predicted that an estimated 13.1 million Americans could face inundation by the year 2100. This prediction accounted for population growth in U.S. coastal communities. Following this work, Hauer (2017) proceeded to integrate previous findings with a migration systems analysis to estimate the magnitudes and destinations of SLR-migrant groups.
+            <p style="text-align:justify"> Furthermore, Hauer's 2017 analysis also accounted for SLR-adaptation technology. It is likely that, in 2100, households earning more than $100,000/year will choose to adapt to sea level rise. The migration data was filtered to reflect this option. Our work aims to provide an intuitive, geovisual representation of these findings, while also bringing attention to obstacles future generations will face in a changing world climate.</p></p>
         </div>
     </div>
     <h2 class="headers" style="padding-bottom: 20px">Project Details</h2>
@@ -146,68 +149,36 @@
                     <h3>Nick Mathews<br>
                         <small>M.S. - Geotechnical Engineering</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                <img class="img-responsive" src="img/efrain.jpg" alt="">
                 <div class="caption">
-                    <h3>Efrain Yarasca Noa<br>
+                    <h3>Efrain Noa-Yarasca<br>
                         <small>PhD - Water Resources</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                <img class="img-responsive" src="img/riley.jpg" alt="">
                 <div class="caption">
                     <h3>Riley Johnson<br>
                         <small>B.S. - Geography & Geospatial Science</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                <img class="img-responsive" src="img/hoda.jpg" alt="">
                 <div class="caption">
                     <h3>Hoda Tahami<br>
                         <small>PhD - Geomatics</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -218,14 +189,6 @@
                     <h3>Dr. Bo Zhao<br>
                         <small>Faculty Advisor</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -236,14 +199,6 @@
                     <h3>Dr. David Wrathall<br>
                         <small>Faculty Advisor</small>
                     </h3>
-                    <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

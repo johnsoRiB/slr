@@ -97,6 +97,10 @@ h4 {
     font-family: 'Francois One', sans-serif;
 }
 
+h3 {
+    font-family: 'Francois One', sans-serif;
+}
+
 h2 {
     font-family: 'Francois One', sans-serif;
 }
@@ -153,10 +157,28 @@ path:hover {
 }
 
 .switch {
-    position: relative;
+    position: absolute;
     display: inline-block;
     width: 60px;
     height: 34px;
+    left: 8px;
+    top: 5px;
+    z-index: 1000;
+    padding-bottom: 0px;
+}
+
+.switch-panel {
+    width: 220px;
+    position: absolute;
+    z-index: 1000;
+    left: 318px;
+    bottom: 18px;
+    color: #070707;
+    padding: 8px 8px;
+    padding-bottom: 35px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
 }
 
 .switch input {display:none;}
@@ -216,3 +238,4 @@ input:checked + .slider:before {
     padding-top: 8px;
     padding-right: 3px;
 }
+

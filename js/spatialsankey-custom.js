@@ -206,7 +206,7 @@ d3.spatialsankey = function() {
     // Range for color coding according to flow size (set colors for single coloring)
     node_color_range = ["yellow", "red"];
     // Instantiate color scale function
-    var color = d3.scale.linear()
+    var color = d3.scale.sqrt()
                   .domain([0, 1])
                   .range(node_color_range);
 
