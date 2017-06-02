@@ -278,7 +278,7 @@
                     }
                 }
                 // flowinfo
-                $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" + d.properties.aggregate_inflows.toString() + "<br><b>Out: </b>" + d.properties.aggregate_outflows.toString() + "");
+                $("#flowinfo").html("<b>In: &nbsp &nbsp</b>" + parseInt(d.properties.aggregate_inflows.toString(),10) + "<br><b>Out: </b>" + parseInt(d.properties.aggregate_outflows.toString(),10) + "");
                 // Draw new links
                 beziers.enter()
                     .append("path")
