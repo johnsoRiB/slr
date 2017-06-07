@@ -147,6 +147,47 @@
     <h4 class="headers">The Data</h4>
     <p style="text-align:justify">Data for this project was produced in March 2017 for a publication in Nature Climate Change, by Dr. Mathew Hauer of the University of Georgia. Obtaining permission to visualize this data allowed for the creation of the Sea Level Rise Migration Project.</p>
     <p style="text-align:justify">The original data set contained flow magnitudes in between U.S. counties, which we found to be too finely scaled for a functional and aesthetic geovisualization. Therefore, we used ArcGIS to group counties into regions, represented by hexagonal geojson shapefiles. Visualizing migrations between these hexagonal regions improved both the performance and usability of our geovisualisation.</p>
+    
+    <!--Methodology content-->
+    <h4 class="headers">Methodology</h4>
+    <p style="...">
+        This methodology shows the preparation of the US map by a mesh of hexagons and the allocation of the county migratory-flow data
+        to the corresponding hexagons. The US map divided by counties was obtained from
+        <a href="http://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html"><u>www.census.gov/geo/maps-data/data</u></a> as shape-file, and the
+        migratory-flows at county level from “Migration induced by sea-level rise could reshape the US population landscape” by Hauer, 2016.
+    </p>
+    <p style="...">
+        The first step consisted on setting hexagon gridlines along the US map. It was prepared in QGIS by using “Hex grid from layer bounds” tool. The
+        hexagon size was arbitrarily selected so that two or three counties were covered by a hexagon.
+    </p>
+    <p style="...">
+        Information related to migration flows were transferred to hexagons by using ArcMap tools. In those counties with large area such as San Bernardino, CA
+        or Yukon-Koyukuk, AK, migration flow information was assigned only to one hexagon. Next, hexagons with no data were deleted in order to lighten
+        the shape-file size.
+    </p>
+    <p style="...">
+        At this stage, 3223 counties are represented by 714 hexagons and migration flows between them, however some flows have same hexagon-origin and hexagon-target, since some hexagons covered more than one county.
+        Given the large amount of information, a python code was developed to process the data. Hexagons with zero migratory-flow and hexagons not affected by projected sea-level rise were hidden, resulting in a concise map and clean map.
+    </p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="image" style="padding-top: 22px">
+                <img class="img-responsive" src="img/hex_1.png" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="image" style="padding-top: 22px">
+                <img class="img-responsive" src="img/hex_2.png" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="image" style="padding-top: 22px">
+                <img class="img-responsive" src="img/hex_3.png" alt="">
+            </div>
+        </div>
+    </div>    
+    
     <h4 class="headers">The Map</h4>
     <p style="text-align:justify">Base map tile layers from CartoDB and Leaflet were used to produce our thematic map. The color scheme of the project highlights the influence of sea level on America’s future landscape (blues and greens), while also bringing attention to the hazardous aspects of sea level rise (reds and yellows).</p>
     <!-- Team Members -->
