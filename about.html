@@ -37,6 +37,10 @@
     <!--Bootstrap Javascript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/spatialsankey-custom.js"></script>
+    <style> h2 {
+        padding-bottom: 20px
+    }
+    </style>
 </head>
 
 <body>
@@ -123,54 +127,73 @@
         </div>
         <div class="col-md-6">
             <h2 class="headers">Project Summary</h2>
-            <p style="text-align:justify">The Sea Level Rise Migration Project, created by students at Oregon State University, is a geovisualization of predicted U.S. migration due to sea level rise (SLR). The project is based on migration predictions for the year 2100 and 1.8m of SLR.</p>
+            <p style="text-align:justify">
+                The Sea Level Rise Migration Project, created by students at Oregon State University, is a geovisualization
+                of predicted U.S. migration due to sea level rise (SLR). The project is based on migration predictions
+                for the year 2100 and 1.8m of SLR.
+            </p>
             <h2 class="headers">Background</h2>
             <p style="text-align:justify">
-                Recent projections show that sea level rise (SLR) could displace millions of Americans by the year 2100. Using recently published projections, our geovisualization aims to show where these Americans will relocate, and how this could alter the U.S. population landscape.
+                Recent projections show that sea level rise (SLR) could displace millions of Americans by the year 2100.
+                Using recently published projections, our geovisualization aims to show where these Americans will relocate,
+                and how this could alter the U.S. population landscape.
             </p>
             <p style="text-align:justify">
-                A 2016 study by Dr. Mathew Hauer, at the University of Georgia, showed that 1.8 meters of sea level rise could displace an estimated 13.1 million people by 2100, living in 319 counties along the American coastline [1]. This study improved on previous estimates by accounting for population growth trends in America. However, the question remained, “Where will SLR-affected migrants go, and how will this effect the rest of the country?”
+                A 2016 study by Dr. Mathew Hauer, at the University of Georgia, showed that 1.8 meters of sea level rise
+                could displace an estimated 13.1 million people by 2100, living in 319 counties along the American
+                coastline [1]. This study improved on previous estimates by accounting for population growth trends in
+                America. However, the question remained, “Where will SLR-affected migrants go, and how will this effect
+                the rest of the country?”
             </p>
         </div>
     </div>
     <br>
     <p style="text-align: justify">
-        To answer this question, Hauer (2017) integrated his 2016 findings with a migration systems analysis to estimate where SLR-displaced migrants would move, on a county-to-county scale, and how their migration could dramatically alter the American population distribution.
+        To answer this question, Hauer (2017) integrated his 2016 findings with a migration systems analysis to estimate
+        where SLR-displaced migrants would move, on a county-to-county scale, and how their migration could dramatically
+        alter the American population distribution.
     </p>
     <p style="text-align:justify">
-        This projection also accounted for advancements in SLR-adaptation technology. Adaptive measures will likely allow communities to mitigate the impacts of sea level rise in the future, but these adaptations will be expensive. Since only relatively wealthy communities will be able to adapt, and community wealth is well represented by individual wealth, Hauer (2017) excluded households making more than $100,000/year from his projection.
+        This projection also accounted for advancements in SLR-adaptation technology. Adaptive measures will likely allow
+        communities to mitigate the impacts of sea level rise in the future, but these adaptations will be expensive.
+        Since only relatively wealthy communities will be able to adapt, and community wealth is well represented by
+        individual wealth, Hauer (2017) excluded households making more than $100,000/year from his projection.
     </p>
     <p style="text-align:justify">
-        Our geovisualization presents the aforementioned findings in an interactive, geospatial setting. The hexagonal nodes are regions containing one or more counties, and the arcs represent outward migration from these regions. By interacting with our migration map, people can see how SLR-induced migration could affect both inland and coastal communities. We hope this project will encourage users to think about the challenges communities will face in the future due to climate change, and how we can all work to create a more resilient future for Americans, and for everyone, in a post-SLR world.
+        Our geovisualization presents the aforementioned findings in an interactive, geospatial setting. The hexagonal
+        nodes are regions containing one or more counties, and the arcs represent outward migration from these regions.
+        By interacting with our migration map, people can see how SLR-induced migration could affect both inland and
+        coastal communities. We hope this project will encourage users to think about the challenges communities will
+        face in the future due to climate change, and how we can all work to create a more resilient future for
+        Americans, and for everyone, in a post-SLR world.
     </p>
-    <h2 class="headers" style="padding-bottom: 20px">Project Details</h2>
-    <h4 class="headers">The Data</h4>
-    <p style="text-align:justify">Data for this project was produced in March 2017 for a publication in Nature Climate Change, by Dr. Mathew Hauer of the University of Georgia. Obtaining permission to visualize this data allowed for the creation of the Sea Level Rise Migration Project.</p>
-    <p style="text-align:justify">The original data set contained flow magnitudes in between U.S. counties, which we found to be too finely scaled for a functional and aesthetic geovisualization. Therefore, we used ArcGIS to group counties into regions, represented by hexagonal geojson shapefiles. Visualizing migrations between these hexagonal regions improved both the performance and usability of our geovisualisation.</p>
     
     <!--Methodology content-->
-    <h4 class="headers">Methodology</h4>
-    <p style="...">
-        This methodology shows the preparation of the US map by a mesh of hexagons and the allocation of the county migratory-flow data
-        to the corresponding hexagons. The US map divided by counties was obtained from
-        <a href="http://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html"><u>www.census.gov/geo/maps-data/data</u></a> as shape-file, and the
-        migratory-flows at county level from “Migration induced by sea-level rise could reshape the US population landscape” by Hauer, 2016.
+    <h2 class="headers">Methodology and Data</h2>
+    <p style="...; text-align: justify">
+        Our SLR-migration data, which contains county-to-county migration data within the U.S., was obtained from Hauer
+        (2017). A shape file of United States counties was obtained from <a target="_blank" href="http://www.census.gov/geo/maps-data/data"><u>www.census.gov/geo/maps-data/data</u></a>. To improve
+        the aesthetics and functionality of this geovisualization, our map displays migration data as flows between
+        hexagonal regions, containing one or more individual counties.
     </p>
-    <p style="...">
-        The first step consisted on setting hexagon gridlines along the US map. It was prepared in QGIS by using “Hex grid from layer bounds” tool. The
-        hexagon size was arbitrarily selected so that two or three counties were covered by a hexagon.
+    <p style="...; text-align: justify">
+        The first step in creating these regions was to set hexagon gridlines along the US map. These were prepared in
+        QGIS by using the “hex grid from layer bounds” tool. Hexagon size was arbitrarily selected so that two or three
+        counties were covered by a hexagon.
     </p>
-    <p style="...">
-        Information related to migration flows were transferred to hexagons by using ArcMap tools. In those counties with large area such as San Bernardino, CA
-        or Yukon-Koyukuk, AK, migration flow information was assigned only to one hexagon. Next, hexagons with no data were deleted in order to lighten
-        the shape-file size.
+    <p style="...; text-align: justify">
+        Migration flow information was transferred to the hexagons using ArcMap tools. In counties with large areas,
+        such as San Bernardino, CA or Yukon-Koyukuk, AK, migration flow information was assigned only to one hexagon.
+        Next, hexagons with no data were deleted in order to reduce the shape-file size.
     </p>
-    <p style="...">
-        At this stage, 3223 counties are represented by 714 hexagons and migration flows between them, however some flows have same hexagon-origin and hexagon-target, since some hexagons covered more than one county.
-        Given the large amount of information, a python code was developed to process the data. Hexagons with zero migratory-flow and hexagons not affected by projected sea-level rise were hidden, resulting in a concise map and clean map.
+    <p style="...; text-align: justify">
+        This resulted in 3223 counties being represented by 714 hexagons, with unique magnitudes of migration between
+        each of them. Furthermore, since some hexagons covered more than one county, some flows had the same hexagon-origin
+        and hexagon-target. Given the large amount of information this yielded, a python script was developed to further
+        process the data. This script hid hexagons with zero migratory-flow, resulting in a clean and concise map.
     </p>
 
-    <div class="row">
+    <div class="row" style="padding-bottom: 10px">
         <div class="col-md-4">
             <div class="image" style="padding-top: 22px">
                 <img class="img-responsive" src="img/hex_1.png" alt="">
@@ -187,42 +210,42 @@
             </div>
         </div>
     </div>
-
+    <div style="text-align: center"><i>Preparation of hexagonal nodes.</i></div>
+<br>
 
     <!--Tutorial-->
-    <h4 class="headers">Tutorial</h4>
+    <h2 class="headers">Tutorial</h2>
     <p style="text-align: justify">
         <b>1)</b> Hover or click on the hexagons to show arcs of county to county outflows.
         Outflows can be seen in the circle within the sidebar
-        The hexagons and arc are displayed on the map as seen circled on the map
+        The hexagons and arcs are displayed on the map as seen circled on the map
     </p>
     <p style="text-align: justify">
-        <b>2)</b> The toggle button can turn the migration hexagon layer on or off to look more closely at coastal inundation from sea level rise.
+        <b>2)</b> Click the toggle switch to turn the hexagon nodes on or off. Turning them off allows for a closer look at coastal inundation from sea level rise.
     </p>
     <p style="text-align: justify">
         <b>3)</b> Use the zoom control to zoom in or out of the map.
     </p>
     <p style="text-align: justify">
-        <b>4)</b> To look a at a specific states coastal inundation or migration, select a state from the drop down menu.
+        <b>4)</b> To look a at a specific state's coastal inundation or migration, select a state from the drop down menu.
     </p>
     <p style="text-align: justify">
-        <b>5)</b> Reset the map by clicking the Sea Level Rise Migration Project logo in the top-left of the navbar or click the Migration Map tab.
+        <b>5)</b> Reset the map by clicking the Sea Level Rise Migration Project logo, or click the "Migration Map" tab.
     </p>
     <p style="text-align: justify">
-        <b>6)</b> To share this geovisualzation to social media, click on the Twitter or Facebook button.
+        <b>6)</b> To share this geovisualzation, click on the Twitter or Facebook button.
     </p>
     <p style="text-align: justify">
         <b>7)</b> The code for this project can be found on Github by clicking on the link. This will take you the repository hosting this site.
     </p>
     <p style="text-align: justify">
-        <b>8)</b> To read and learn more about this project, click on the about tab in the navbar.
+        <b>8)</b> To learn more about this project, click on the "About" tab.
     </p>
-        <img src="img/screenshot.JPG" height="500" width="800" class="img-responsive"/>
+        <img src="img/screenshot.JPG" height="500" width="800" class="img-responsive" style="padding-top: 20px; padding-bottom: 10px; margin: auto"/>
+    <div style="text-align: center"><i>Tutorial of project functions.</i></div>
     </p>
-
-
-    <h4 class="headers">The Map</h4>
-    <p style="text-align:justify">Base map tile layers from CartoDB and Leaflet were used to produce our thematic map. The color scheme of the project highlights the influence of sea level on America’s future landscape (blues and greens), while also bringing attention to the hazardous aspects of sea level rise (reds and yellows).</p>
+    <br>
+<hr>
     <!-- Team Members -->
     <a name="team" style=""></a>
     <div class="row">
@@ -298,7 +321,7 @@
             <div class="col-lg-12">
                 <br>
                 <h2 class="headers">Credits</h2>
-                <p style="text-align:justify">Several libraries were used to produce our desired aesthetic, including: Bootstrap, CartoDB, Leaflet, D3, SpatialSankey, and Google Fonts. The project is hosted on GitHub under an MIT license.</p>
+                <p style="text-align:justify">Several libraries were used to produce our desired aesthetic, including: Bootstrap, CartoDB, Leaflet, D3, SpatialSankey, and Google Fonts. Base map tile layers from CartoDB and Leaflet were used to produce our thematic map. The project is hosted on GitHub under an MIT license.</p>
                 <h2 class="headers">References</h2>
                 <p>[1] Hauer, M. E. (2017). Migration induced by sea-level rise could reshape the US population landscape. Nature Climate Change, (April). <a href="https://doi.org/10.1038/NCLIMATE3271"><u>https://doi.org/10.1038/NCLIMATE3271</u></a>
                     <br><br>
