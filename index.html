@@ -225,9 +225,14 @@
 `
 
     // Set leaflet map
-    var map = L.map('map',{zoomControl: false}).setView([39.8282, -101.5795], 5);
+    var map = L.map('map',{zoomControl: false});
+//    map.setView([39.8282, -101.5795], 5);
     map.options.minZoom = 3;
     map.options.maxZoom = 14;
+    map.fitBounds([
+        [53.0, -133.4],
+        [22.2, -63.0]
+    ]);
     L.control.zoom({position: "bottomright"}).addTo(map);
 
     // construct the base map.
