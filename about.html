@@ -178,7 +178,8 @@
     </p>
     <p style="...; text-align: justify">
         The first step in creating these regions was to set hexagon gridlines along the US map. These were prepared in
-        QGIS by using the “hex grid from layer bounds” tool. After generating several maps with different hexagon-side sizes (HSS), a threshold was obtained in HSS equal to 100 km (Figure 1), which was selected for 
+        QGIS by using the “hex grid from layer bounds” tool. After generating several maps with different hexagon-side 
+        sizes (HSS), a threshold was obtained in HSS equal to 100 km <a target="_blank" style="color: blue" href="img/figure_1.png">(Figure 1)</a>, which was selected for 
         the next step.
     </p>
     <p style="...; text-align: justify">
@@ -187,14 +188,14 @@
         By other hand, since the purpose of this project is to show a map of migration from areas affected by sea level rise to other areas, source counties represented now by hexagons were reduced to those coastal hexagons.
         This resulted in 3223 counties being represented by 714 hexagons, with unique magnitudes of migration between
         each of them. From them, 95 hexagons considered as sources, 714 targets, and still 46,204 links. However, since some hexagons covered more than one county, some flows had the same hexagon-origin
-        and hexagon-target (Figure 2).
+        and hexagon-target <a target="_blank" style="color: blue" href="img/figure_2.png">(Figure 2)</a>.
     </p>
     <p style="...; text-align: justify">
         Given the large amount of information this yielded, a manual work with shapefiles even in ArcMap results in a tedious labor.
         Hence, two <a target="_blank" style="color: blue" href="Python_codes/main.py">python script</a> were developed to further 
         process the data. This script identifies links with same source and target to merge flow (migration)values. This script also 
         hid hexagons with zero migratory-flow to delete them. Finally, the process resulted in a clean and concise map with only 8475 links. This map was 
-        converted into GeoJSON format and its atributes into CSV format (Figure 3).
+        converted into GeoJSON format and its atributes into CSV format <a target="_blank" style="color: blue" href="img/figure_3.png">(Figure 3)</a>.
     </p>
 
     <div class="row" style="padding-bottom: 10px">
