@@ -1,1 +1,3 @@
 
+This folder stores the two python codes used to reduce flow links (migration data). Since the US map was represented by hexagons, a
+considerable number of links were reduced.
