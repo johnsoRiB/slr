@@ -1,5 +1,7 @@
 ## Sea Level Rise Migration Project
 
+https://johnsorib.github.io/slr/
+
 The Sea Level Rise Migration Project, created by students at Oregon State University, is a geovisualization of predicted U.S. migration due to sea level rise (SLR). The project is based on migration predictions for the year 2100 and 1.8m of SLR.
 
 #### Team
